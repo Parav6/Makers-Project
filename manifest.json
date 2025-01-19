@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Webpage Screenshot",
+  "version": "1.0",
+  "description": "A Chrome extension to take screenshots of the current webpage.",
+  "permissions": ["tabs", "activeTab","cookies","http://localhost:7000/api/v1/users/login"],
+  "host_permissions": ["http://localhost:7000/api/v1/users/login"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
+
+
+  
+  

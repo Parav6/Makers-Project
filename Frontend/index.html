@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    input {
+        margin-top: 10px;
+        padding: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    #detail{
+      width: 100%;
+      height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #login{
+      width: 100%;
+      height: 35vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #info{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* display:none; */
+    }
+    #pinShow{
+     margin: 30px;
+    }
+    #regDetails{
+      display: none;
+    }
+
+    .subInfo img{
+      width: 300px;
+      aspect-ratio:16/9;
+    }
+    .subInfo{
+      margin: 30px;
+    }
+    #back{
+      display: none;
+      margin: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="pinShow"><h1 id="user"></h1></div>
+  <div id="detail">
+    <div id="register">
+      <button id="initiateReg">Click to Register new User</button>
+      <div id="regDetails">
+      <form action="">
+      <input id="userName" type="text" placeholder="User Name">
+      <input id="password" type="text" placeholder="Password">
+      </form>
+      <button id="regSubmit">Submit</button>
+    </div>
+    </div>
+    <div id="login">
+      <p id="pinValue"></p>
+      <input id="pinHolder" type="number" placeholder="enter 5 digit pin">
+      <button id="pinSubmit">Submit</button>
+    </div>
+  </div>
+  <div id="info">
+
+    <!-- <div class="subInfo">
+      <img src="" alt="">
+      <p></p>
+      <br>
+    </div> -->
+
+  </div>
+  <button id="back">Back</button>
+
+<script>
+
+const pinShow = document.getElementById('pinShow');
+const detail = document.getElementById("detail");
+const info = document.getElementById("info");
+const register = document.getElementById("register");
+const initiateReg = document.getElementById("initiateReg");
+const regDetails = document.getElementById("regDetails");
+const userName = document.getElementById("userName");
+const password = document.getElementById("password");
+const regSubmit = document.getElementById("regSubmit");
+const pinHolder = document.getElementById("pinHolder");
+const pinSubmit = document.getElementById("pinSubmit");
+const pinValue = document.getElementById("pinValue");
+const user = document.getElementById("user");
+const back = document.getElementById("back");
+
+
+const initiate = ()=>{
+  regDetails.style.display = "block"
+};
+
+const submitReg = async()=>{
+  const username = userName.value
+  const pass = password.value
+
+  const data = {
+    userName:username,
+    password:pass
+  }
+
+  const url = "http://localhost:7000/api/v1/users/register"
+
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then((data) => {
+    console.log(data);
+    register.style.display = "none"
+    pinValue.innerHTML = `Your Pin for this id is ${data.data}. You need this While using Extension`
+    // Handle success response
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // Handle error response
+  });
+};
+
+const submitPin = async ()=>{
+  const pin = pinHolder.value
+  user.innerText = pin
+  const data = {
+    pin : pin
+  }
+
+  const url = "http://localhost:7000/api/v1/info/show"
+
+  await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then((data) => {
+    // console.log(data.data.allInfo);
+    detail.style.display = "none";
+    back.style.display = "block"
+    
+    // info.style.display = "block"
+    // user.innerHTML = data.data.allInfo.
+
+for(let doc of data.data.allInfo){
+  console.log(doc)
+    let newDiv= document.createElement("div")
+        newDiv.innerHTML= `<img src=${doc.screenShortUrl} alt=""><p>${doc.infoAbout}</p><br><br>`
+        newDiv.classList.add("subInfo")
+        console.log(newDiv)
+        info.appendChild(newDiv)
+
+}
+pinHolder.value = ""
+    // Handle success response
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // Handle error response
+  });
+};
+
+const goBack = ()=>{
+  back.style.display = "none"
+  info.innerHTML = "";
+  detail.style.display = "block"
+  user.innerText = ""
+};
+
+
+
+
+initiateReg.addEventListener("click", initiate);
+regSubmit.addEventListener("click",submitReg);
+pinSubmit.addEventListener("click",submitPin);
+back.addEventListener("click",goBack)
+
+</script>
+
+</body>
+</html>
