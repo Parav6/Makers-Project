@@ -1,48 +1,3 @@
-// chrome.cookies.get({url:"http://localhost:7000" , name : "accessToken"}, async(cookie)=>{
-//   if(cookie){
-//     const accessToken = cookie.value;
-//     const url = "http://localhost:7000/api/v1/users/verifyUser"
-//     await fetch(url,{
-//       method:"POST",
-//       headers:{
-//          'Authorization': `Bearer ${accessToken}`
-//       },
-//       credentials:"include"
-//     })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(error => console.error('Error:', error));
-//   }else{
-//     console.log("No access token found");
-//   }
-// });
-
-
-
-
-
-
-
-
-// document.getElementById('takeScreenshot').addEventListener('click', async () => {
-//   try {
-//     // Capture the visible tab
-//     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-//     const screenshotDataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
-
-//     // Display the screenshot
-//     const screenshotImage = document.getElementById('screenshotImage');
-//     screenshotImage.src = screenshotDataUrl;
-
-//     // Optionally download the screenshot
-//     const a = document.createElement('a');
-//     a.href = screenshotDataUrl;
-//     // a.download = 'screenshot.png';
-//     // a.click();
-//   } catch (error) {
-//     console.error('Error taking screenshot:', error);
-//   }
-// });
 
 //selectors
 const screenShortBtn = document.getElementById("takeScreenshot");
@@ -132,4 +87,25 @@ submitBtn.addEventListener("click", submitDetails);
 pinSubmit.addEventListener("click",submitPin)
 
 
+
+
+// document.getElementById('takeScreenshot').addEventListener('click', async () => {
+//   try {
+//     // Capture the visible tab
+//     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+//     const screenshotDataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
+
+//     // Display the screenshot
+//     const screenshotImage = document.getElementById('screenshotImage');
+//     screenshotImage.src = screenshotDataUrl;
+
+//     // Optionally download the screenshot
+//     const a = document.createElement('a');
+//     a.href = screenshotDataUrl;
+//     // a.download = 'screenshot.png';
+//     // a.click();
+//   } catch (error) {
+//     console.error('Error taking screenshot:', error);
+//   }
+// });
   
