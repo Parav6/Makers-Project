@@ -31,7 +31,7 @@ const generateUniqueCode = (username, password)=> {
 
 const registerUser = asyncHandler( async(req , res)=>{
     const {userName,password} = req.body;
-    console.log(userName,password);
+    // console.log(userName,password);
 
     if(!(userName && password)){
         throw new ApiError(400 , "Both fields are Required");
@@ -99,7 +99,7 @@ const loginUser = asyncHandler( async(req, res)=>{
     //     sameSite : "Lax"
     // };
 
-    console.log("yesss!!!!!")
+    // console.log("yesss!!!!!")
 
     return res
     .status(200)

@@ -133,7 +133,7 @@ const submitReg = async()=>{
   })
   .then(response => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     register.style.display = "none"
     pinValue.innerHTML = `Your Pin for this id is ${data.data}. You need this While using Extension`
     // Handle success response
@@ -170,7 +170,7 @@ const submitPin = async ()=>{
     // user.innerHTML = data.data.allInfo.
 
 for(let doc of data.data.allInfo){
-  console.log(doc)
+  // console.log(doc)
     let newDiv= document.createElement("div")
         newDiv.innerHTML= `<img src=${doc.screenShortUrl} alt=""><p>${doc.infoAbout}</p><br><br>`
         newDiv.classList.add("subInfo")

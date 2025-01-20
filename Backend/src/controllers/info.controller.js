@@ -59,7 +59,7 @@ const showInfo = asyncHandler( async(req , res)=>{
       throw new ApiError("404","invalid pin")
    };
 
-   console.log(allInfo);
+   // console.log(allInfo);
 
    return res
    .status(200)

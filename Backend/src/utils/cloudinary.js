@@ -20,7 +20,7 @@ const uploadOnCloudinary = async (localFilePath)=>{
             timestamp: Math.floor(Date.now() / 1000)
         });
 
-        console.log("file is uploaded on cloudinary ", response.url);
+        // console.log("file is uploaded on cloudinary ", response.url);
         fs.unlinkSync(localFilePath);
         return response;
 
