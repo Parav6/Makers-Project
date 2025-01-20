@@ -73,7 +73,7 @@ const submitDetails =async ()=>{
 })
 .catch(error => {
   console.error('Error:', error);
-  finalStatement.innerHTML = "Failed to save screenshot";
+  finalStatement.innerHTML = "Failed to save screenshot.You must register before using it";
 });
 };
 //-----------------------------------------------------------------------------------------

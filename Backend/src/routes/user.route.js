@@ -8,7 +8,7 @@ const router = Router();
 
 
 router.route("/register").post(registerUser);
-router.route("/").get(showLogin);
+// router.route("/").get(showLogin);
 
 router.route("/login").post(loginUser);
 
