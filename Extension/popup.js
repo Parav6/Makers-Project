@@ -79,8 +79,6 @@ const submitDetails =async ()=>{
 //-----------------------------------------------------------------------------------------
 
 
-
-
 //function calls
 screenShortBtn.addEventListener("click", takeScreenShort);
 submitBtn.addEventListener("click", submitDetails);
@@ -89,23 +87,4 @@ pinSubmit.addEventListener("click",submitPin)
 
 
 
-// document.getElementById('takeScreenshot').addEventListener('click', async () => {
-//   try {
-//     // Capture the visible tab
-//     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-//     const screenshotDataUrl = await chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' });
-
-//     // Display the screenshot
-//     const screenshotImage = document.getElementById('screenshotImage');
-//     screenshotImage.src = screenshotDataUrl;
-
-//     // Optionally download the screenshot
-//     const a = document.createElement('a');
-//     a.href = screenshotDataUrl;
-//     // a.download = 'screenshot.png';
-//     // a.click();
-//   } catch (error) {
-//     console.error('Error taking screenshot:', error);
-//   }
-// });
   

@@ -8,7 +8,6 @@ import {User} from "../models/user.model.js"
 
 const submitInfo = asyncHandler( async(req , res)=>{
     const {infoAbout , color,pin} = req.body;
-    console.log(infoAbout,pin);
 
     const user = await User.findOne({pin});
     if(!user){
@@ -19,7 +18,7 @@ const submitInfo = asyncHandler( async(req , res)=>{
     console.log
 
      if(!screenShortUrl){
-        throw new ApiError(400,"screenshort is required")
+        throw new ApiError(400,"screenShort is required")
      };
 
      const screenShort = await uploadOnCloudinary(screenShortUrl);

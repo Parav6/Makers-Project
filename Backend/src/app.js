@@ -6,6 +6,10 @@ import multer from "multer";
 
 const app = express();
 
+// Router calling
+import userRouter from "./routes/user.route.js";
+import infoRouter from "./routes/info.route.js";
+
 app.use(cors({
     origin: process.env.CORS_ORIGIN, // help in building cross origin between frontend and backend
     credentials: true
@@ -21,10 +25,6 @@ app.use(cookieParser()); // Used to parse the incoming cookies
 
 // Set up multer for handling multipart/form-data
 const upload = multer({ dest: 'uploads/' });
-
-// Router calling
-import userRouter from "./routes/user.route.js";
-import infoRouter from "./routes/info.route.js";
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/info", infoRouter);
