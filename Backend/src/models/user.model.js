@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 const userSchema = mongoose.Schema(
@@ -9,6 +8,11 @@ const userSchema = mongoose.Schema(
             required : true,
             lowercase : true,
             trim: true,
+        },
+        email:{
+            type : String,
+            require : true,
+            email : true
         },
         password:{
             type : String,
@@ -31,8 +35,10 @@ userSchema.pre("save", async function(next){
     next();
 });
 
+
 userSchema.methods.isPasswordCorrect = async function(password){
     return await bcrypt.compare(password,this.password);
 };
+
 
 export const User = mongoose.model("User", userSchema);

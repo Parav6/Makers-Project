@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {submitInfo,showInfo} from "../controllers/info.controller.js";
+import {submitInfo,getShowInfo} from "../controllers/info.controller.js";
 import {upload} from "../middlewares/multer.middleware.js";  
 
 const router = Router();
@@ -13,6 +13,7 @@ router.route("/submit").post(
     ])
     ,submitInfo);
 
-router.route("/show").post(showInfo)    
+ 
+router.route("/show").get(getShowInfo)
 
 export default router

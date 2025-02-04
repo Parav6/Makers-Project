@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+#mainForm{
+    min-width: 60%;
+    min-height: 40vh;
+    height: auto;
+    width: auto;
+    margin: 9vh .2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border-radius: 1.5rem;
+    padding:.5rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+#infoAboutPin{
+    width: 60%;
+    min-height:20vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+#infoAboutPin p{
+    margin: 2rem;
+    font-size: 1rem;
+    text-align: center;
+}
+label{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+input{
+    width: 15rem;
+    height: 2rem;
+}
+button{
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+}
+
+    </style>
+
+</head>
+<body>
+    <h1>Welcome to Screen Notes</h1>
+<div id="mainForm">
+    <form action="/api/v1/users/register" method="POST" enctype="application/x-www-form-urlencoded" >
+        <label for="userName">User Name:</label>
+        <input type="text" id="userName" name="userName" required><br><br>
+
+        <label for="email">Email Id:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button id="showPin" type="submit">Submit</button>
+    </form>
+</div>
+
+    <div id="infoAboutPin">
+        <p id="pinInfo"></p>
+        <form action="/api/v1/users/login" method="GET">
+            <button type="submit">Enter Pin</button>
+        </form>
+    </div>
+
+    <script>
+
+        // const showPin = document.getElementById("showPin")
+        // const infoAboutPin = document.getElementById("infoAboutPin")
+        // const pinInfo = document.getElementById("pinInfo")
+
+        // const show = ()=>{
+        //     infoAboutPin.style.display="block"
+        // };
+
+        // showPin.addEventListener("click",show)
+
+    </script>
+    
+</body>
+</html>

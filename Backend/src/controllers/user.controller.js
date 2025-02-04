@@ -3,6 +3,7 @@ import {ApiResponse} from "../utils/ApiResponse.js";
 import {ApiError} from "../utils/ApiError.js";
 import {User} from "../models/user.model.js";
 
+
 const generateUniqueCode = (username, password)=> {
     const combined = `${username}:${password}`;
     
@@ -15,12 +16,13 @@ const generateUniqueCode = (username, password)=> {
     return hash.toString().padStart(5, '0');
   };
 
-const registerUser = asyncHandler( async(req , res)=>{
-    const {userName,password} = req.body;
-    // console.log(userName,password);
 
-    if(!(userName && password)){
-        throw new ApiError(400 , "Both fields are Required");
+const registerUser = asyncHandler( async(req , res)=>{
+    const { userName, email, password } = req.body;
+    console.log(userName,password,email);
+
+    if(!(userName && password && email)){
+        throw new ApiError(400 , "All fields are Required");
     };
 
     const pin = generateUniqueCode(userName,password);
@@ -34,6 +36,7 @@ const registerUser = asyncHandler( async(req , res)=>{
     const user = await User.create({
         userName:userName,
         password:password,
+        email:email,
         pin:pin
     });
 
@@ -45,10 +48,14 @@ const registerUser = asyncHandler( async(req , res)=>{
         throw new ApiError(500, "unable to create user")
     };
 
-    return res.status(200).json(
-        new ApiResponse(200,pin,"User created successfully")
-    );
-    
+
+    return res.render("showPin",{pin:pin})
+
+    // return res.status(200).json(
+    //     new ApiResponse(200,pin,"User created successfully")
+    // );
+
+
 });
 
 const loginUser = asyncHandler( async(req, res)=>{
@@ -82,7 +89,17 @@ const loginUser = asyncHandler( async(req, res)=>{
     )
 }); 
 
+const getRegisterUser = asyncHandler( async(req,res)=>{
+    res.render("main")
+});
+
+const getLoginUser = asyncHandler( async(req,res)=>{
+    res.render("pin")
+});
+
 export {
     registerUser,
-    loginUser
+    loginUser,
+    getRegisterUser,
+    getLoginUser
 };

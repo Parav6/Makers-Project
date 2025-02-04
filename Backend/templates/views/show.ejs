@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    body{
+        text-align: center;
+    }
+    #container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 400px;
+        height: auto;
+        aspect-ratio:16/9;
+        margin: 3rem;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    .imgCont{
+        width: 300px;
+        aspect-ratio:16/9;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        border: .1rem solid black;
+        transition: width 0.3s ease-in-out;
+    }
+    .imgCont:hover{
+        width: 380px;
+        aspect-ratio:16/9;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+
+</head>
+<body>
+    <h1>Welcome to Screen Notes</h1>
+
+    <div id="container">
+        <% myArray.forEach((item, index) => { %>
+            <div class="item" id="item-<%= index %>">
+               <div class="imgCont"> <img src=<%= item.screenShortUrl %> alt=""></div>
+                <p><%= item.infoAbout %></p>
+            </div>
+        <% }) %>
+    </div>
+
+</body>
+</html>

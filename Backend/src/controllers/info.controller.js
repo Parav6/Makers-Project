@@ -47,35 +47,25 @@ const submitInfo = asyncHandler( async(req , res)=>{
 });
 
 
-const showInfo = asyncHandler( async(req , res)=>{
-   const {pin} = req.body;
+const getShowInfo = asyncHandler(async(req,res)=>{
+
+   const pin = req.query.pin;
 
    const allInfo = await Info.find({pin:pin}).select(
       "-pin "
-   )
+   );
 
    if(allInfo.length == 0){
       throw new ApiError("404","invalid pin")
    };
 
-   // console.log(allInfo);
-
-   return res
-   .status(200)
-   .json(
-      new ApiResponse(
-          200,
-          {
-             allInfo
-          },
-          "user logged in successfully"
-      )
-  )
-
+ 
+   res.render("show",{myArray:allInfo})
 });
+
 
 export {
    submitInfo,
-   showInfo
+   getShowInfo
 
 }
