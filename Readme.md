@@ -40,7 +40,7 @@ This project is a Chrome extension that allows users to register, take screensho
    ```sh
    npm run dev
 
-6. Open the index.html file on Browser.
+6. The registration portal will run on http://localhost:PORT/api/v1/users/register
 
 7. Register yourself using user name and password and in return it will give you a five digit pin .
 
